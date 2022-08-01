@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-08-01 Mon 20:48 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Standard Operating Procedure: TMS Notes Generation</title>
+<meta name="author" content="Pierce Wang" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" href="https://piercegwang.github.io/org-stylesheets/org.min.css">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Standard Operating Procedure: TMS Notes Generation</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0cfeab8">1. Purpose</a></li>
+<li><a href="#org4c45256">2. Scope</a></li>
+<li><a href="#orgbcdfd64">3. Goals</a></li>
+<li><a href="#org3c25651">4. Definition</a></li>
+<li><a href="#org0da3f4c">5. Responsibilities</a></li>
+<li><a href="#orge4e7914">6. Procedure</a>
+<ul>
+<li><a href="#org4afb2e0">6.1. Initial Setup</a>
+<ul>
+<li><a href="#org646e351">6.1.1. R installation</a></li>
+<li><a href="#org2d062fd">6.1.2. Terminal/Command Line Setup</a></li>
+<li><a href="#orgd347d45">6.1.3. R Google Account Integration Setup</a></li>
+<li><a href="#orgb0ddbdc">6.1.4. Directory setup</a></li>
+</ul>
+</li>
+<li><a href="#org197b11c">6.2. Recurring Setup</a>
+<ul>
+<li><a href="#org07da1be">6.2.1. Editing the Information Input File</a></li>
+<li><a href="#org8bf6057">6.2.2. Google Re-authentication</a></li>
+</ul>
+</li>
+<li><a href="#org79fccd7">6.3. Running the script</a>
+<ul>
+<li><a href="#org2203694">6.3.1. Helpful Terminal/UNIX Commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0cfeab8" class="outline-2">
+<h2 id="org0cfeab8"><span class="section-number-2">1.</span> Purpose</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This SOP was created to describe in detail the steps involved in creating notes entries for patient&rsquo;s TMS sessions in Elation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4c45256" class="outline-2">
+<h2 id="org4c45256"><span class="section-number-2">2.</span> Scope</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+This document only describes the creation of the notes entries with the program created by Pierce Wang during the summer of 2022. The script takes care of many functions&#x2013;but does not fill in all information, and should be double checked for correctness.
+</p>
+
+<p>
+Timestamps of appointments are not included, and are expected to be filled out by those who are implementing the procedure.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbcdfd64" class="outline-2">
+<h2 id="orgbcdfd64"><span class="section-number-2">3.</span> Goals</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Standardize the process of creating TMS session notes and inform those relevant persons on how to set up their environment and use the program.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3c25651" class="outline-2">
+<h2 id="org3c25651"><span class="section-number-2">4.</span> Definition</h2>
+<div class="outline-text-2" id="text-4">
+<dl class="org-dl">
+<dt><span class="underline">Terminal</span></dt><dd>A Unix-based bash/zsh shell which allows one to run commands on a command line</dd>
+<dt><span class="underline">R</span></dt><dd>A program/programming language that is often used for bulk data analysis.</dd>
+<dt><span class="underline">R shell</span></dt><dd>The interface which is called when you run the <code>R</code> command in a UNIX terminal/Windows shell.</dd>
+<dt><span class="underline">RStudio</span></dt><dd>An application which is used for programming in R and provides useful data.</dd>
+<dt><span class="underline">Rscript</span></dt><dd>A program (called on the command line) that runs files with the extension <code>.R</code> line by line by feeding it into the R shell</dd>
+<dt><span class="underline">cd</span></dt><dd>A command on unix-based systems. This command stands for <i>change directory</i></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org0da3f4c" class="outline-2">
+<h2 id="org0da3f4c"><span class="section-number-2">5.</span> Responsibilities</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Program initially created by Pierce Wang, responsibilities for code are thus assigned accordingly.</li>
+<li>Additionally, human error sometimes causes discrepancies in data.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge4e7914" class="outline-2">
+<h2 id="orge4e7914"><span class="section-number-2">6.</span> Procedure</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org4afb2e0" class="outline-3">
+<h3 id="org4afb2e0"><span class="section-number-3">6.1.</span> Initial Setup</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+These instructions describe the initial setup process (e.g. on a new computer).
+</p>
+</div>
+
+<div id="outline-container-org646e351" class="outline-4">
+<h4 id="org646e351"><span class="section-number-4">6.1.1.</span> R installation</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+Follow the links below to install both programs.
+</p>
+
+<dl class="org-dl">
+<dt><b>R</b></dt><dd><a href="https://cran.rstudio.com/">https://cran.rstudio.com/</a></dd>
+<dt><b>RStudio</b></dt><dd><a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org2d062fd" class="outline-4">
+<h4 id="org2d062fd"><span class="section-number-4">6.1.2.</span> Terminal/Command Line Setup</h4>
+<div class="outline-text-4" id="text-6-1-2">
+</div>
+
+<ol class="org-ol">
+<li><a id="org0504c0c"></a><span class="todo TODO">TODO</span> Windows<br /></li>
+
+<li><a id="orgf8617cc"></a>Mac<br />
+<div class="outline-text-5" id="text-6-1-2-2">
+<ol class="org-ol">
+<li>Open Terminal
+<ul class="org-ul">
+<li>Option 1: Spotlight
+<ol class="org-ol">
+<li>Press ⌘+Space (hold down command then press space)</li>
+<li>Type &ldquo;Terminal&rdquo; (without quotes)</li>
+<li>Press enter</li>
+</ol></li>
+<li>Option 2: Finder
+<ol class="org-ol">
+<li>Open Finder</li>
+<li>Navigate to your Applications folder</li>
+<li>Navigate to the Utilities folder</li>
+<li>Double click on the Terminal application</li>
+</ol></li>
+</ul></li>
+<li>Check that R is installed correctly
+Type <code>R --version</code> into terminal and press enter</li>
+<li>If it returns a version number, then you&rsquo;re all set up!</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgd347d45" class="outline-4">
+<h4 id="orgd347d45"><span class="section-number-4">6.1.3.</span> R Google Account Integration Setup</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<ol class="org-ol">
+<li>Open terminal (see <a href="#org2d062fd">Terminal/Command Line Setup</a> for help)</li>
+<li>Open R shell
+Type <code>R</code> then pressing enter</li>
+<li>Install googlesheets4 package (type and press enter at the end of each line to send it to the shell)
+<ol class="org-ol">
+<li><code>install.packages("googlesheets4")</code>
+Type this line in, press return, and then you will choose a mirror (by typing the corresponding number and pressing enter). Pick any one of these locations. Preferably, pick one that is closest to you, but the package is small enough that it doesn&rsquo;t matter that much. So, pick whichever one you feel like!</li>
+<li><code>library(googlesheets4)</code>
+This command will not provide any output. It simply loads the package you just downloaded and makes the appropriate functions available to you.</li>
+<li><code>gs4_auth()</code>
+This function will bring up a few prompts. Say yes to all of them by pressing 1 and then return for each.</li>
+<li>Now that everything is set up, type <code>q()</code> and press <code>n</code> to leave the <i>R shell</i></li>
+</ol></li>
+<li>Once you run the last command of the previous step, you will be given a couple options. If the email you wish to connect to is listed there, then type the corresponding number. If not, then type 0 and press enter to authenticate a new account</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgb0ddbdc" class="outline-4">
+<h4 id="orgb0ddbdc"><span class="section-number-4">6.1.4.</span> Directory setup</h4>
+<div class="outline-text-4" id="text-6-1-4">
+<ul class="org-ul">
+<li>Download the github repository (source code) from <a href="https://github.com/Acacia-Mental-Health/tms-notes-generation/archive/refs/heads/master.zip">TMS Notes Generation Download Link</a></li>
+<li>Unzip the zip file</li>
+<li>Move the folder to an accessible place (you decide where to put it such that it would be most organized) on your computer</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>The <code>NotesGenerationSetup.R</code> file is the one which you will edit with appropriate patient codes and time constraints.</li>
+<li>The <code>NotesEntryGenerator.R</code> file is the one you will run once everything is set up.</li>
+</ul>
+
+
+<p>
+The directory tree that you download will look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-artist">   containing_folder/
+   &#9500;&#9472; tms-notes-generator/
+   &#9474;  &#9500;&#9472; src/
+   &#9474;  &#9474;  &#9500;&#9472; NotesGenerationSetup.R
+   &#9474;  &#9474;  &#9500;&#9472; NotesEntryGenerator.R
+   &#9474;  &#9500;&#9472; docs/
+   &#9474;  &#9500;&#9472; output/
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org197b11c" class="outline-3">
+<h3 id="org197b11c"><span class="section-number-3">6.2.</span> Recurring Setup</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-org07da1be" class="outline-4">
+<h4 id="org07da1be"><span class="section-number-4">6.2.1.</span> Editing the Information Input File</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<ol class="org-ol">
+<li>In any including RStudio), open up the <code>NotesGenerationSetup.R</code> file and edit the following two variables:
+<dl class="org-dl">
+<dt><code>dates_constraints</code></dt><dd>A list containing two dates in the form MM/DD/YY both surrounded by quotes</dd>
+<dt><code>list_of_patients</code></dt><dd>A `list` of two items, the first is another list of patient codes. This list determines the codes that are searched by the program. The second item contains a quoted string containing the patient code to be displayed at the top of the report.</dd>
+</dl></li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org8bf6057" class="outline-4">
+<h4 id="org8bf6057"><span class="section-number-4">6.2.2.</span> Google Re-authentication</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<p>
+<b>This step is necessary if the authentication is not working.</b>
+</p>
+
+<ol class="org-ol">
+<li>Open terminal (see <a href="#org2d062fd">Terminal/Command Line Setup</a> for help)</li>
+<li>Open R shell
+Type <code>R</code> then pressing enter</li>
+<li><p>
+Authenticate for the appropriate google account
+</p>
+<pre class="example">
+library(googlesheets4)
+gs4_auth()
+</pre></li>
+<li>Once you run the last command of the previous step, you will be given a couple options. If the email you wish to connect to is listed there, then type the corresponding number. If not, then type 0 and press enter to authenticate a new account</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79fccd7" class="outline-3">
+<h3 id="org79fccd7"><span class="section-number-3">6.3.</span> Running the script</h3>
+<div class="outline-text-3" id="text-6-3">
+<ol class="org-ol">
+<li>Navigate/Go to the folder where you have stored the <code>tms-notes-generation</code> directory
+Note: You should not be <b>in</b> the directory at this point. Rather, you should see the folder <code>tms-notes-generation</code>. This is important for the next step</li>
+<li>Open <a href="#org2d062fd">terminal</a></li>
+<li>Type <code>cd</code> + <b>space</b>, then from Finder drag the folder into Terminal then type enter</li>
+<li>Now, type <code>Rscript src/NotesEntryGenerator.R</code> + enter
+<ul class="org-ul">
+<li><span class="underline">NOTE: If the script is not working, and if the error log shows it has anything to do with authentication with Google, then refer to the steps for Google Authentication: <a href="#orgd347d45">R Google Account Integration Setup</a> &amp; <a href="#org8bf6057">Google Re-authentication</a></span></li>
+</ul></li>
+</ol>
+</div>
+
+<div id="outline-container-org2203694" class="outline-4">
+<h4 id="org2203694"><span class="section-number-4">6.3.1.</span> Helpful Terminal/UNIX Commands</h4>
+<div class="outline-text-4" id="text-6-3-1">
+<ul class="org-ul">
+<li>Directory-related commands. Use these commands to better understand where you are in your computer when navigating it within Terminal.
+<dl class="org-dl">
+<dt><b><code>pwd</code></b></dt><dd>List your current directory path.</dd>
+<dt><b><code>ls</code></b></dt><dd>List the files in your current directory</dd>
+<dt><b><code>cd</code></b></dt><dd>&ldquo;Change Directory&rdquo;; Used to move around directories</dd>
+</dl></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Pierce Wang</p>
+<p class="date">Created: 2022-08-01 Mon 20:48</p>
+</div>
+</body>
+</html>

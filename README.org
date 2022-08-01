@@ -1,0 +1,122 @@
+#+TITLE: TMS Notes Generation R script
+
+* Purpose
+
+This SOP was created to describe in detail the steps involved in creating notes entries for patient's TMS sessions in Elation.
+
+* Scope
+
+This document only describes the creation of the notes entries with the program created by Pierce Wang during the summer of 2022. The script takes care of many functions--but does not fill in all information, and should be double checked for correctness.
+
+Timestamps of appointments are not included, and are expected to be filled out by those who are implementing the procedure.
+
+* Goals
+
+Standardize the process of creating TMS session notes and inform those relevant persons on how to set up their environment and use the program.
+
+* Definition
+
+- Terminal :: A Unix-based bash/zsh shell which allows one to run commands on a command line
+- R :: A program/programming language that is often used for bulk data analysis.
+- R shell :: The interface which is called when you run the ~R~ command in a UNIX terminal/Windows shell.
+- RStudio :: An application which is used for programming in R and provides useful data.
+- Rscript :: A program (called on the command line) that runs files with the extension ~.R~ line by line by feeding it into the R shell
+
+* Responsibilities
+
+- Program initially created by Pierce Wang, responsibilities for code are thus assigned accordingly.
+- Additionally, human error sometimes causes discrepancies in data.
+
+* Procedure
+
+** Initial Setup
+These instructions describe the initial setup process (e.g. on a new computer).
+
+*** R installation
+
+Follow the links below to install both programs.
+
+- R :: https://cran.rstudio.com/
+- RStudio :: https://www.rstudio.com/products/rstudio/download/
+
+*** Terminal/Command Line Setup
+:PROPERTIES:
+:ID:       66975334-b12c-4e78-bf43-5bb298d1ddf0
+:END:
+
+**** TODO Windows
+
+**** Mac
+
+1. Open Terminal
+   - Option 1: Spotlight
+     1. Press ⌘+Space (hold down command then press space)
+     2. Type "Terminal" (without quotes)
+     3. Press enter
+   - Option 2: Finder
+     1. Open Finder
+     2. Navigate to your Applications folder
+     3. Navigate to the Utilities folder
+     4. Double click on the Terminal application
+2. Check that R is installed correctly
+   Type ~R --version~ into terminal and press enter
+3. If it returns a version number, then you're all set up!
+
+*** R Google Account Integration Setup
+:PROPERTIES:
+:ID:       2e413c7a-a3a3-49d8-87b7-55134e1c2792
+:END:
+
+1. Open terminal (see [[id:66975334-b12c-4e78-bf43-5bb298d1ddf0][Terminal/Command Line Setup]] for help)
+2. Open R shell
+   Type ~R~ then pressing enter
+3. Install googlesheets4 package (type and press enter at the end of each line to send it to the shell)
+   1. ~install.packages("googlesheets4")~
+      Type this line in, press return, and then you will choose a mirror (by typing the corresponding number and pressing enter). Pick any one of these locations. Preferably, pick one that is closest to you, but the package is small enough that it doesn't matter that much. So, pick whichever one you feel like!
+   2. ~library(googlesheets4)~
+      This command will not provide any output. It simply loads the package you just downloaded and makes the appropriate functions available to you.
+   3. ~gs4_auth()~
+      This function will bring up a few prompts. Say yes to all of them by pressing 1 and then return for each.
+   4. Now that everything is set up, type ~q()~ and press ~n~ to leave the /R shell/
+4. Once you run the last command of the previous step, you will be given a couple options. If the email you wish to connect to is listed there, then type the corresponding number. If not, then type 0 and press enter to authenticate a new account
+
+
+*** Directory setup
+
+- Download the github repository (source code) from [[https://github.com/Acacia-Mental-Health/tms-notes-generation/archive/refs/heads/master.zip][TMS Notes Generation]]
+- Unzip the zip file
+- Move the folder to an accessible place (you decide where to put it such that it would be most organized) on your computer
+
+** Recurring Setup
+
+*** Editing the Information Input File
+
+1. In any text editor (including RStudio), open up the ~NotesGenerationSetup.R~ file and edit the following two variables:
+   + ~dates_constraints~ :: A list containing two dates in the form MM/DD/YY both surrounded by quotes
+   + ~list_of_patients~ :: A `list` of two items, the first is another list of patient codes. This list determines the codes that are searched by the program. The second item contains a quoted string containing the patient code to be displayed at the top of the report.
+
+
+*** Google Re-authentication
+:PROPERTIES:
+:ID:       f108d698-46cc-4949-b3a9-264e5d74dcef
+:END:
+*This step is necessary if the authentication is not working.*
+
+1. Open terminal (see [[id:66975334-b12c-4e78-bf43-5bb298d1ddf0][Terminal/Command Line Setup]] for help)
+2. Open R shell
+   Type ~R~ then pressing enter
+3. Authenticate for the appropriate google account
+   : library(googlesheets4)
+   : gs4_auth()
+4. Once you run the last command of the previous step, you will be given a couple options. If the email you wish to connect to is listed there, then type the corresponding number. If not, then type 0 and press enter to authenticate a new account
+
+** Running the script
+
+1. Navigate to the ~tms-notes-generation~ directory
+   a) Open [[id:66975334-b12c-4e78-bf43-5bb298d1ddf0][terminal]]
+   b) Mac Instructions
+      1. Type ~cd~, space, then from Finder drag the folder into Terminal then type enter
+   c) Windows Instructions
+      1. TBD
+2. Type ~Rscript src/NotesEntryGenerator.R~ + enter
+   * _NOTE: If the script is not working, and if the error log shows it has anything to do with authentication with Google, then refer to the steps for Google Authentication: [[id:2e413c7a-a3a3-49d8-87b7-55134e1c2792][R Google Account Integration Setup]] & [[id:f108d698-46cc-4949-b3a9-264e5d74dcef][Google Re-authentication]]_
