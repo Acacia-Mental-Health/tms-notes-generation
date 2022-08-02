@@ -92,8 +92,8 @@ Course:  Session # %s of %s planned.<br />"
   if(nrow(tms_sessions_day) == 1) {
     output <- paste0(output, generate_session(tms_sessions_day[1,]))
     tms_end <- sprintf(tms_end_template, 
-                       if (!is.na(tms_sessions_day[1,][c('Treatment #')][[1]])) as.character(tms_sessions_day[1,][c('Treatment #')][[1]]) else "x",
-                       if (!is.na(tms_sessions_day[1,][c('Planned Course')][[1]])) as.character(tail(tms_sessions_day[c('Planned Course')][[1]], 1)) else "x")
+                       if (!is.na(tms_sessions_day[1,][c('Treatment #')][[1]])) as.character(tms_sessions_day[1,][c('Treatment #')][[1]]) else "NA",
+                       if (!is.na(tms_sessions_day[1,][c('Planned Course')][[1]])) as.character(tail(tms_sessions_day[c('Planned Course')][[1]], 1)) else "NA")
   } else {
     for (i in 1:nrow(tms_sessions_day)) {
       output <- paste0(output, sprintf("Session %s: xx:xx XX", if (is.na(tms_sessions_day[i,][c('Treatment #')][[1]]))
