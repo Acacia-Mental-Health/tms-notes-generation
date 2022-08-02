@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 source("./src/NotesGenerationSetup.R") 
+readRenviron(".Renviron")
 # error_file <-"../output/error_log.txt"
 error_file <-"output/error_log.txt"
 
