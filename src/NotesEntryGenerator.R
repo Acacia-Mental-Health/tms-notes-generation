@@ -37,7 +37,6 @@ pkgLoad <- function( packages = "std" ) {
 
 ## Ensure all packages are loaded/installed.
 pkgLoad()
-## gs4_auth(gargle_oauth_email = "***REMOVED***")
 
 generate_output <- function(tech_filtered, survey_tms_filtered, survey_results_filtered, patient) {
     print(sprintf("generate_output for %s\n", patient))
@@ -106,15 +105,19 @@ Course:  Session # %s of %s planned.<br />"
                        if (is.na(tms_sessions_day[1,][c('Planned Course')][[1]])) as.character(tail(tms_sessions_day[c('Treatment #')][[1]], 1)) else as.character(tms_sessions_day[1,][c('Planned Course')][[1]]))
   }
   output <- paste0(output, tms_end)
-  if (nrow(survey_tms_filtered) > 0 | nrow(survey_results_filtered) > 0)
+
+  if (nrow(survey_tms_filtered) > 0 | nrow(survey_results_filtered) > 0) {
     output <- paste0(output, sprintf(patient_survey_start, format(cur_date, "%m/%d/%y")))
-  if (nrow(survey_tms_filtered) > 0) {
-    output <- paste0(output, generate_pretms(patient_surveys_tms_day[1,]))
-  }
-  if (nrow(survey_tms_filtered) > 0 | nrow(survey_results_filtered) > 0)
+    if (nrow(survey_tms_filtered) > 0) {
+        output <- paste0(output, generate_pretms(patient_surveys_tms_day[1,]))
+    }
     output <- paste0(output, "\n<br />\"<br />")
-  if (nrow(survey_results_filtered) > 0) {
-    output <- paste0(output, generate_surveys(cur_date, patient_surveys_results_day))
+    if (nrow(survey_results_filtered) > 0) {
+        output <- paste0(output, generate_surveys(cur_date, patient_surveys_results_day))
+    }
+  } else {
+    cat(sprintf("Patient %s has no survey data.\n", patient),
+        file=error_file, fill=FALSE, append=TRUE)
   }
   output <- paste0(output, "\"")
 }
@@ -344,6 +347,9 @@ for (patient in list_of_patients) {
     if (nrow(tech_filtered) > 0) {
         print(sprintf("Output sessions for %s", patient))
         generate_output(tech_filtered, survey_tms_filtered, survey_results_filtered, patient)
+    } else {
+      cat(sprintf("Patient %s has no technician data. Check formatting?\n", patient),
+          file=error_file, fill=FALSE, append=TRUE)
     }
 }
 cat("End of error log.", file=error_file, fill=FALSE, append=TRUE)
