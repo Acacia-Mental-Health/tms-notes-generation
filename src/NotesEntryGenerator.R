@@ -207,7 +207,7 @@ cat(sprintf("Error log for %s:\n", Sys.time()), file=error_file, fill=FALSE, app
 fetch_patient_id_aliases <- function(demographics, id) {
   lower_id <- tolower(id)
   aliases <- demographics[tolower(demographics$`Patient ID`) %like% lower_id, ]
-  return(str_split(aliases$`Patient ID`[1], ", "))
+  return(str_split(aliases$`Patient ID`[1], ", ")[[1]])
 }
 
 ## gs4_deauth()
