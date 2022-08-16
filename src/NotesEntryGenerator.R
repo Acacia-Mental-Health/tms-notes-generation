@@ -217,15 +217,13 @@ fetch_patient_id_aliases <- function(demographics, id) {
 ## Remove entries with "xx" in the ID column
 ## Prevent case sensitivity in patient IDs by changing all IDs to lowercase
 fetch_tech_raw <- function() {
-  tech_raw_old_1 <- read_sheet(Sys.getenv("TECH_OLD"), sheet="TMS Technician Data Input 2021 (3)")
+  tech_raw_old_1 <- read_sheet(Sys.getenv("TECH_OLD"), sheet="Historic TMS Data Pt1")
 
-  tech_raw_old_2 <- read_sheet(Sys.getenv("TECH_OLD"), sheet="TMS Technician Data Input 2021 1 (1)")
-  
-  tech_raw_old_3 <- read_sheet(Sys.getenv("TECH_OLD"), sheet="TMS Technician Data Input Summer 2020")
+  tech_raw_old_2 <- read_sheet(Sys.getenv("TECH_OLD"), sheet="Historic TMS Data Pt2")
   
   tech_raw_current <- read_sheet(Sys.getenv("TECH_NEW"), sheet="Query")
   
-  tech_raw <- rbind(tech_raw_old_1, tech_raw_old_2, tech_raw_old_3, tech_raw_current) %>%
+  tech_raw <- rbind(tech_raw_old_1, tech_raw_old_2, tech_raw_current) %>%
     rename(Date = 'What is the date of the treatment?') %>%
     unite(pt_id, c('What is the four letter patient ID? (First two letters of FIRST and LAST name)', 'What are the last two digits of the patient\'s cell phone number?'), sep="", remove=TRUE)
   
