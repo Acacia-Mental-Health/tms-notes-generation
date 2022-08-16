@@ -6,4 +6,4 @@ tmp/
 */.RData
 */.Rhistory
 .Rproj.user/
-.Renviron
+Renviron.txt
