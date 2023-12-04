@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-19 Mon 16:10 -->
+<!-- 2023-12-04 Mon 15:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Standard Operating Procedure: TMS Notes Generation</title>
@@ -202,32 +202,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcc5743e">1. Purpose</a></li>
-<li><a href="#org05c9447">2. Scope</a></li>
-<li><a href="#org9e7aafd">3. Goals</a></li>
-<li><a href="#org5ea0acc">4. Definition</a></li>
-<li><a href="#org7f2326f">5. Responsibilities</a></li>
-<li><a href="#orge7f713b">6. Procedure</a>
+<li><a href="#orgac69669">1. Purpose</a></li>
+<li><a href="#orga255c92">2. Scope</a></li>
+<li><a href="#org8463e7e">3. Goals</a></li>
+<li><a href="#org8221cf0">4. Definition</a></li>
+<li><a href="#orgd77990e">5. Responsibilities</a></li>
+<li><a href="#org4457492">6. Procedure</a>
 <ul>
-<li><a href="#org25141fe">6.1. Initial Setup</a>
+<li><a href="#orgd76201d">6.1. Initial Setup</a>
 <ul>
-<li><a href="#orgeb1d61e">6.1.1. R installation</a></li>
-<li><a href="#orga7aa0d3">6.1.2. Terminal/Command Line Setup</a></li>
-<li><a href="#org469f5db">6.1.3. R Google Account Integration Setup</a></li>
-<li><a href="#org56f213a">6.1.4. Directory setup</a></li>
+<li><a href="#orgea72f6a">6.1.1. R installation</a></li>
+<li><a href="#orgd4884bd">6.1.2. Terminal/Command Line Setup</a></li>
+<li><a href="#orge44c033">6.1.3. R Google Account Integration Setup</a></li>
+<li><a href="#orgc09597d">6.1.4. Directory setup</a></li>
 </ul>
 </li>
-<li><a href="#org1fc2344">6.2. Recurring Setup and Debugging</a>
+<li><a href="#org7978298">6.2. Recurring Setup and Debugging</a>
 <ul>
-<li><a href="#orgec75105">6.2.1. Editing the Information Input File</a></li>
-<li><a href="#org52e54e4">6.2.2. Google Re-authentication</a></li>
-<li><a href="#orgc30bab0">6.2.3. Google Problems</a></li>
+<li><a href="#org4a5e21e">6.2.1. Editing the Information Input File</a></li>
+<li><a href="#org2d6fe68">6.2.2. Google Re-authentication</a></li>
+<li><a href="#orgf7ff108">6.2.3. Google Problems</a></li>
 </ul>
 </li>
-<li><a href="#org18f66e2">6.3. Running the program</a></li>
-<li><a href="#orgf6539f6">6.4. Additional Notes/References</a>
+<li><a href="#orgc1a3085">6.3. Running the program</a></li>
+<li><a href="#org9be026d">6.4. Additional Notes/References</a>
 <ul>
-<li><a href="#orgde1a097">6.4.1. Helpful Terminal/UNIX Commands</a></li>
+<li><a href="#org1b5932d">6.4.1. Helpful Terminal/UNIX Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -236,8 +236,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgcc5743e" class="outline-2">
-<h2 id="orgcc5743e"><span class="section-number-2">1.</span> Purpose</h2>
+<div id="outline-container-orgac69669" class="outline-2">
+<h2 id="orgac69669"><span class="section-number-2">1.</span> Purpose</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This SOP was created to describe in detail the steps involved in creating notes entries for patient&rsquo;s TMS sessions in Elation.
@@ -245,8 +245,8 @@ This SOP was created to describe in detail the steps involved in creating notes 
 </div>
 </div>
 
-<div id="outline-container-org05c9447" class="outline-2">
-<h2 id="org05c9447"><span class="section-number-2">2.</span> Scope</h2>
+<div id="outline-container-orga255c92" class="outline-2">
+<h2 id="orga255c92"><span class="section-number-2">2.</span> Scope</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 This document only describes the creation of the notes entries with the program created by Pierce Wang during the summer of 2022. The script takes care of many functions&#x2013;but does not fill in all information, and should be double checked for correctness.
@@ -258,8 +258,8 @@ Timestamps of appointments are not included, and are expected to be filled out b
 </div>
 </div>
 
-<div id="outline-container-org9e7aafd" class="outline-2">
-<h2 id="org9e7aafd"><span class="section-number-2">3.</span> Goals</h2>
+<div id="outline-container-org8463e7e" class="outline-2">
+<h2 id="org8463e7e"><span class="section-number-2">3.</span> Goals</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Standardize the process of creating TMS session notes and inform those relevant persons on how to set up their environment and use the program.
@@ -267,8 +267,8 @@ Standardize the process of creating TMS session notes and inform those relevant 
 </div>
 </div>
 
-<div id="outline-container-org5ea0acc" class="outline-2">
-<h2 id="org5ea0acc"><span class="section-number-2">4.</span> Definition</h2>
+<div id="outline-container-org8221cf0" class="outline-2">
+<h2 id="org8221cf0"><span class="section-number-2">4.</span> Definition</h2>
 <div class="outline-text-2" id="text-4">
 <dl class="org-dl">
 <dt><span class="underline">Terminal</span></dt><dd>A Unix-based bash/zsh shell which allows one to run commands on a command line</dd>
@@ -282,8 +282,8 @@ Standardize the process of creating TMS session notes and inform those relevant 
 </div>
 </div>
 
-<div id="outline-container-org7f2326f" class="outline-2">
-<h2 id="org7f2326f"><span class="section-number-2">5.</span> Responsibilities</h2>
+<div id="outline-container-orgd77990e" class="outline-2">
+<h2 id="orgd77990e"><span class="section-number-2">5.</span> Responsibilities</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>Program initially created by Pierce Wang, responsibilities for code are thus assigned accordingly.</li>
@@ -292,30 +292,30 @@ Standardize the process of creating TMS session notes and inform those relevant 
 </div>
 </div>
 
-<div id="outline-container-orge7f713b" class="outline-2">
-<h2 id="orge7f713b"><span class="section-number-2">6.</span> Procedure</h2>
+<div id="outline-container-org4457492" class="outline-2">
+<h2 id="org4457492"><span class="section-number-2">6.</span> Procedure</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 The following prescribes the order in which you should follow these instructions:
 </p>
 
 <ul class="org-ul">
-<li>If you are setting your system up for the first time, then follow the directions step by step through the <a href="#org25141fe">Initial Setup</a> instructions first, and then step through <a href="#org18f66e2">Running the program</a>.</li>
-<li>If you have already set up the system on your computer, then follow the directions in <a href="#orgec75105">Editing the Information Input File</a>, then go ahead to <a href="#org18f66e2">Running the program</a></li>
-<li>If you&rsquo;re running into problems with authentication, then follow the instructions in <a href="#org52e54e4">Google Re-authentication</a></li>
+<li>If you are setting your system up for the first time, then follow the directions step by step through the <a href="#orgd76201d">Initial Setup</a> instructions first, and then step through <a href="#orgc1a3085">Running the program</a>.</li>
+<li>If you have already set up the system on your computer, then follow the directions in <a href="#org4a5e21e">Editing the Information Input File</a>, then go ahead to <a href="#orgc1a3085">Running the program</a></li>
+<li>If you&rsquo;re running into problems with authentication, then follow the instructions in <a href="#org2d6fe68">Google Re-authentication</a></li>
 </ul>
 </div>
 
-<div id="outline-container-org25141fe" class="outline-3">
-<h3 id="org25141fe"><span class="section-number-3">6.1.</span> Initial Setup</h3>
+<div id="outline-container-orgd76201d" class="outline-3">
+<h3 id="orgd76201d"><span class="section-number-3">6.1.</span> Initial Setup</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 These instructions describe the initial setup process (e.g. on a new computer). <span class="underline">Follow these initial setup instructions in order, completing all steps carefully.</span>
 </p>
 </div>
 
-<div id="outline-container-orgeb1d61e" class="outline-4">
-<h4 id="orgeb1d61e"><span class="section-number-4">6.1.1.</span> R installation</h4>
+<div id="outline-container-orgea72f6a" class="outline-4">
+<h4 id="orgea72f6a"><span class="section-number-4">6.1.1.</span> R installation</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
 Follow the links below to install both programs.
@@ -328,15 +328,15 @@ Follow the links below to install both programs.
 </div>
 </div>
 
-<div id="outline-container-orga7aa0d3" class="outline-4">
-<h4 id="orga7aa0d3"><span class="section-number-4">6.1.2.</span> Terminal/Command Line Setup</h4>
+<div id="outline-container-orgd4884bd" class="outline-4">
+<h4 id="orgd4884bd"><span class="section-number-4">6.1.2.</span> Terminal/Command Line Setup</h4>
 <div class="outline-text-4" id="text-6-1-2">
 </div>
 
 <ol class="org-ol">
-<li><a id="orgee79a59"></a><span class="todo TODO">TODO</span> Windows<br /></li>
+<li><a id="orgce20a3c"></a><span class="todo TODO">TODO</span> Windows<br /></li>
 
-<li><a id="orgc10c65d"></a>Mac<br />
+<li><a id="org3b1a73a"></a>Mac<br />
 <div class="outline-text-5" id="text-6-1-2-2">
 <ol class="org-ol">
 <li>Open Terminal
@@ -364,11 +364,11 @@ Type <code>R --version</code> into terminal and press enter</li>
 </ol>
 </div>
 
-<div id="outline-container-org469f5db" class="outline-4">
-<h4 id="org469f5db"><span class="section-number-4">6.1.3.</span> R Google Account Integration Setup</h4>
+<div id="outline-container-orge44c033" class="outline-4">
+<h4 id="orge44c033"><span class="section-number-4">6.1.3.</span> R Google Account Integration Setup</h4>
 <div class="outline-text-4" id="text-6-1-3">
 <ol class="org-ol">
-<li>Open terminal (see <a href="#orga7aa0d3">Terminal/Command Line Setup</a> for help)</li>
+<li>Open terminal (see <a href="#orgd4884bd">Terminal/Command Line Setup</a> for help)</li>
 <li>Open R shell
 Type <code>R</code> then pressing enter</li>
 <li>Install googlesheets4 package (type and press enter at the end of each line to send it to the shell)
@@ -386,8 +386,8 @@ This function will bring up a few prompts. Say yes to all of them by pressing 1 
 </div>
 </div>
 
-<div id="outline-container-org56f213a" class="outline-4">
-<h4 id="org56f213a"><span class="section-number-4">6.1.4.</span> Directory setup</h4>
+<div id="outline-container-orgc09597d" class="outline-4">
+<h4 id="orgc09597d"><span class="section-number-4">6.1.4.</span> Directory setup</h4>
 <div class="outline-text-4" id="text-6-1-4">
 <ol class="org-ol">
 <li>Download the github repository (source code) from <a href="https://github.com/Acacia-Mental-Health/tms-notes-generation/archive/refs/heads/master.zip">TMS Notes Generation Download Link</a></li>
@@ -428,13 +428,15 @@ The directory tree that you download will look like this:
 </ol>
 
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 1: </span><code>Renviron.txt file template</code></label><pre class="src src-sh"><span style="color: #86e7d7;">TECH_OLD</span>=<span style="color: #79D836;">"1II3YhgolHqzoiNRoEmt_O_qSfEeYdB_8WFbxIj7arFE"</span>
-<span style="color: #86e7d7;">TECH_NEW</span>=<span style="color: #79D836;">"11USkI3AXBQMPTDL4x86Faj14B"</span>
-<span style="color: #86e7d7;">SURVEY_OLD</span>=<span style="color: #79D836;">"1feaWBxrb64UZckCIkCS_GElFMs9EMumWMU_S9EQXMfc"</span>
-<span style="color: #86e7d7;">SURVEY_CURRENT</span>=<span style="color: #79D836;">"1bME1KAkUeX4oB7SsOARSYeEPV4OBSY7O0r09"</span>
-<span style="color: #86e7d7;">DEMOGRAPHICS</span>=<span style="color: #79D836;">"1YYNOKWGscn42bDkVmAGmyn7D42dUh6iB18bBoS8_kKQ"</span>
-<span style="color: #86e7d7;">GOOGLE_EMAIL</span>=<span style="color: #79D836;">"example_email@domain.com"</span>
-<span style="color: #86e7d7;">WORKING_DIR</span>=<span style="color: #79D836;">"~/example/directory"</span>
+<label class="org-src-name"><span class="listing-number">Listing 1: </span><code>Renviron.txt file template</code></label><pre class="src src-sh"><span style="color: #BF93C3;">TECH_OLD</span>=<span style="color: #86B187;">"1II3YhgolHqzoiNRoEmt_O_qSfEeYdB_8WFbxIj7arFE"</span>
+<span style="color: #BF93C3;">TECH_2022_07_05_2023_11_17</span>=<span style="color: #86B187;">"1vG8Fjw88WHxPsEUHkCpTEG9yAAaFqMhj1Ujbxc6XNYU"</span>
+<span style="color: #BF93C3;">TECH_2023_11_17_CURRENT</span>=<span style="color: #86B187;">"11YLL3QHc5huose_6Zqe66Bxk3D4VlWWIW4IbyNjJ6Eg"</span>
+<span style="color: #BF93C3;">SURVEY_OLD</span>=<span style="color: #86B187;">"1feaWBxrb64UZckCIkCS_GElFMs9EMumWMU_S9EQXMfc"</span>
+<span style="color: #BF93C3;">SURVEY_2022_06_26_2023_11_18</span>=<span style="color: #86B187;">"1bME1KAkUeX4oB7SsOARSYeEPV4OBSY7O0r09-T_8d9c"</span>
+<span style="color: #BF93C3;">SURVEY_2023_11_18_CURRENT</span>=<span style="color: #86B187;">"18qTtD-X82DwWCOwAj-7Pr_Uf_FXYf4yMDT4HpsJ-5bw"</span>
+<span style="color: #BF93C3;">DEMOGRAPHICS</span>=<span style="color: #86B187;">"1YYNOKWGscn42bDkVmAGmyn7D42dUh6iB18bBoS8_kKQ"</span>
+<span style="color: #BF93C3;">GOOGLE_EMAIL</span>=<span style="color: #86B187;">"example_email@domain.com"</span>
+<span style="color: #BF93C3;">WORKING_DIR</span>=<span style="color: #86B187;">"~/example/directory"</span>
 </pre>
 </div>
 
@@ -449,26 +451,26 @@ https​://docs.google.com/spreadsheets/d/​<b><span class="underline">spreadsh
 <ol class="org-ol">
 <li>In Finder, Navigate/Go to the folder where you have stored the <code>tms-notes-generation</code> directory
 Note: You should not be <b>in</b> the directory at this point. Rather, you should see the folder <code>tms-notes-generation</code> (or <code>tms-notes-generation-master</code>). This is important for the next step</li>
-<li>Open <a href="#orga7aa0d3">terminal</a></li>
+<li>Open <a href="#orgd4884bd">terminal</a></li>
 <li>Type <code>cd</code> + <b>space</b>, then from Finder drag the folder into Terminal then type enter</li>
 <li>Now, type <code>pwd</code> and press enter, and then copy the output of that command and replace the word <span class="underline">directory</span></li>
 </ol></li>
-<li>Now that everything is set up, duplicate this file and make sure it exists both in the root folder, &ldquo;tms-notes-generator&rdquo; and the <code>src</code> folder. Then, head over to <a href="#orgec75105">Editing the Information Input File</a></li>
+<li>Now that everything is set up, duplicate this file and make sure it exists both in the root folder, &ldquo;tms-notes-generator&rdquo; and the <code>src</code> folder. Then, head over to <a href="#org4a5e21e">Editing the Information Input File</a></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1fc2344" class="outline-3">
-<h3 id="org1fc2344"><span class="section-number-3">6.2.</span> Recurring Setup and Debugging</h3>
+<div id="outline-container-org7978298" class="outline-3">
+<h3 id="org7978298"><span class="section-number-3">6.2.</span> Recurring Setup and Debugging</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
-These instructions are intended for all subsequent runs of this program on a system which has already been set up according to the <a href="#org25141fe">Initial Setup</a> instructions.
+These instructions are intended for all subsequent runs of this program on a system which has already been set up according to the <a href="#orgd76201d">Initial Setup</a> instructions.
 </p>
 </div>
 
-<div id="outline-container-orgec75105" class="outline-4">
-<h4 id="orgec75105"><span class="section-number-4">6.2.1.</span> Editing the Information Input File</h4>
+<div id="outline-container-org4a5e21e" class="outline-4">
+<h4 id="org4a5e21e"><span class="section-number-4">6.2.1.</span> Editing the Information Input File</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 This step is to be repeated every time you generate notes according to which patients and what time period you want to generate notes for.
@@ -484,8 +486,8 @@ This step is to be repeated every time you generate notes according to which pat
 </div>
 </div>
 
-<div id="outline-container-org52e54e4" class="outline-4">
-<h4 id="org52e54e4"><span class="section-number-4">6.2.2.</span> Google Re-authentication</h4>
+<div id="outline-container-org2d6fe68" class="outline-4">
+<h4 id="org2d6fe68"><span class="section-number-4">6.2.2.</span> Google Re-authentication</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 <b>This step is only necessary if the authentication is not working.</b>
@@ -506,13 +508,13 @@ gs4_auth()
 </div>
 </div>
 
-<div id="outline-container-orgc30bab0" class="outline-4">
-<h4 id="orgc30bab0"><span class="section-number-4">6.2.3.</span> Google Problems</h4>
+<div id="outline-container-orgf7ff108" class="outline-4">
+<h4 id="orgf7ff108"><span class="section-number-4">6.2.3.</span> Google Problems</h4>
 </div>
 </div>
 
-<div id="outline-container-org18f66e2" class="outline-3">
-<h3 id="org18f66e2"><span class="section-number-3">6.3.</span> Running the program</h3>
+<div id="outline-container-orgc1a3085" class="outline-3">
+<h3 id="orgc1a3085"><span class="section-number-3">6.3.</span> Running the program</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 <span class="underline">Once all setup has been completed, follow these instructions to run the program.</span>
@@ -522,18 +524,18 @@ gs4_auth()
 <li>Open Rstudio, and open the NotesEntryGenerator.R</li>
 <li>Now, run the whole program by selecting all with <code>Command + a</code> and then pressing <code>Command + Enter</code>
 <ul class="org-ul">
-<li><span class="underline">NOTE: If the script is not working, and if the error log shows it has anything to do with authentication with Google, then refer to the steps for Google Authentication: <a href="#org469f5db">R Google Account Integration Setup</a> &amp; <a href="#org52e54e4">Google Re-authentication</a></span></li>
+<li><span class="underline">NOTE: If the script is not working, and if the error log shows it has anything to do with authentication with Google, then refer to the steps for Google Authentication: <a href="#orge44c033">R Google Account Integration Setup</a> &amp; <a href="#org2d6fe68">Google Re-authentication</a></span></li>
 </ul></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgf6539f6" class="outline-3">
-<h3 id="orgf6539f6"><span class="section-number-3">6.4.</span> Additional Notes/References</h3>
+<div id="outline-container-org9be026d" class="outline-3">
+<h3 id="org9be026d"><span class="section-number-3">6.4.</span> Additional Notes/References</h3>
 <div class="outline-text-3" id="text-6-4">
 </div>
-<div id="outline-container-orgde1a097" class="outline-4">
-<h4 id="orgde1a097"><span class="section-number-4">6.4.1.</span> Helpful Terminal/UNIX Commands</h4>
+<div id="outline-container-org1b5932d" class="outline-4">
+<h4 id="org1b5932d"><span class="section-number-4">6.4.1.</span> Helpful Terminal/UNIX Commands</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <ul class="org-ul">
 <li>Directory-related commands. Use these commands to better understand where you are in your computer when navigating it within Terminal.
@@ -550,7 +552,7 @@ gs4_auth()
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Pierce Wang</p>
-<p class="date">Created: 2022-09-19 Mon 16:10</p>
+<p class="date">Created: 2023-12-04 Mon 15:12</p>
 </div>
 </body>
 </html>
