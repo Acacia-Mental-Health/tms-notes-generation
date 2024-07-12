@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-readRenviron(".Renviron")
+readRenviron("Renviron.txt")
 setwd(Sys.getenv("WORKING_DIR"))
 source("./src/NotesGenerationSetup.R") 
 # error_file <-"../output/error_log.txt"
