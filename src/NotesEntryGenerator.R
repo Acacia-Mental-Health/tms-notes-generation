@@ -228,9 +228,10 @@ fetch_tech_raw <- function() {
   ## tech_raw_2022_07_05_2023_11_17 <- read_sheet(Sys.getenv("TECH_2022_07_05_2023_11_17"), sheet="Query")
 
   tech_raw_2023_11_17_2024_10_31 <- read_sheet(Sys.getenv("TECH_2023_11_17_2024_10_31"), sheet="Query")
-  tech_raw_2024_11_01_CURRENT <- read_sheet(Sys.getenv("TECH_2024_11_01_CURRENT"), sheet="Query")
+  tech_raw_2024_11_01_2026_04_30 <- read_sheet(Sys.getenv("TECH_2024_11_01_2026_04_30"), sheet="Query")
+  tech_raw_2026_05_01_CURRENT <- read_sheet(Sys.getenv("TECH_2026_05_01_CURRENT"), sheet="Query")
   
-  tech_raw <- rbind(tech_raw_2023_11_17_2024_10_31, tech_raw_2024_11_01_CURRENT) %>%
+  tech_raw <- rbind(tech_raw_2023_11_17_2024_10_31, tech_raw_2024_11_01_2026_04_30, tech_raw_2026_05_01_CURRENT) %>%
     rename(Date = 'What is the date of the treatment?') %>%
     unite(pt_id, c('What is the four letter patient ID? (First two letters of FIRST and LAST name)', 'What are the last two digits of the patient\'s cell phone number?'), sep="", remove=TRUE)
   
