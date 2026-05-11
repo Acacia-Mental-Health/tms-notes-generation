@@ -312,7 +312,31 @@ fetch_survey_raw_tms <- function() {
              'Have you experienced any side effects from treatment in the last day? If so, please describe. Leave blank if none.',
              'Over the last day, did you have any thoughts about hurting yourself?'))
 
-  survey_raw_tms_2024_11_01_CURRENT <- read_sheet(Sys.getenv("SURVEY_2024_11_01_CURRENT"), sheet="Query") %>%
+  survey_raw_tms_2024_11_01_2026_04_30 <- read_sheet(Sys.getenv("SURVEY_2024_11_01_2026_04_30"), sheet="Query") %>%
+    filter(!is.na(`Over the last day, have you felt down/ depressed / sad? [1 of 7]`)) %>%
+    rename(pt_id = 'ID') %>%
+      mutate(Date = as.Date(Timestamp),
+             pt_id = tolower(pt_id)) %>%
+    select(c('pt_id',
+             'Date',
+             'Over the last day, have you felt down/ depressed / sad? [1 of 7]',
+             'Over the last day, have you felt anxious / on edge / panicked? [2 of 7]',
+             'Over the last day, have you felt irritable / angry? [3 of 7]',
+             'Over the last day, have you felt happy /euphoric? [4 of 7]',
+             'Over the last day, have you felt peaceful / mindful? [5 of 7]',
+             'Over the last day, have you felt hopeful / optimistic? [6 of 7]',
+             'Over the last day, have you felt suicidal? [7 of 7]',
+             'How many hours did you sleep last night?',
+             'How was your sleep quality?',
+             'Have you eaten at least one meal (>400 Calories) since you slept last night?',
+             'How much caffeine did you consume over the last day? (A cup of coffee has ~100mg, black tea ~50mg, green tea ~30mg)',
+             'How much alcohol did you consume over the last 24 hours? (1 drink = 1 beer, 1 glass of wine, or 1 shot of liquor)',
+             'What drugs (e.g. marijuana) did you use in the last 24 hours and how much did you use? Write N/A if none.',
+             'What over-the-counter medication did you use in the last 24 hours and how much did you use? Leave blank if none.',
+             'Have you experienced any side effects from treatment in the last day? If so, please describe. Leave blank if none.',
+             'Over the last day, did you have any thoughts about hurting yourself?'))
+  
+  survey_raw_tms_2026_05_01_CURRENT <- read_sheet(Sys.getenv("SURVEY_2026_05_01_CURRENT"), sheet="Query") %>%
     filter(!is.na(`Over the last day, have you felt down/ depressed / sad? [1 of 7]`)) %>%
     rename(pt_id = 'ID') %>%
       mutate(Date = as.Date(Timestamp),
@@ -337,7 +361,7 @@ fetch_survey_raw_tms <- function() {
              'Over the last day, did you have any thoughts about hurting yourself?'))
   
   ## survey_raw_tms <- rbind(survey_raw_tms_old, survey_raw_tms_2022_06_26_2023_11_18, survey_raw_tms_2023_11_18_CURRENT)
-  survey_raw_tms <- rbind(survey_raw_tms_2023_11_18_2024_10_31, survey_raw_tms_2024_11_01_CURRENT)
+  survey_raw_tms <- rbind(survey_raw_tms_2023_11_18_2024_10_31, survey_raw_tms_2024_11_01_2026_04_30, survey_raw_tms_2026_05_01_CURRENT)
   survey_raw_tms
 }
 fetch_survey_raw_results <- function() {
@@ -383,7 +407,7 @@ fetch_survey_raw_results <- function() {
     mutate(Date = as.Date(`Timestamp`),
            pt_id = tolower(pt_id))
 
-  survey_raw_results_2024_11_01_CURRENT <- read_sheet(Sys.getenv("SURVEY_2024_11_01_CURRENT"), sheet="Main Sheet") %>%
+  survey_raw_results_2024_11_01_2026_04_30 <- read_sheet(Sys.getenv("SURVEY_2024_11_01_2026_04_30"), sheet="Main Sheet") %>%
     select(c('Timestamp',
              'Patient Code',
              'QIDS',
@@ -397,7 +421,21 @@ fetch_survey_raw_results <- function() {
     mutate(Date = as.Date(`Timestamp`),
            pt_id = tolower(pt_id))
   
-  survey_raw_results <- rbind(survey_raw_results_2023_11_18_2024_10_31, survey_raw_results_2024_11_01_CURRENT) %>%
+  survey_raw_results_2026_05_01_CURRENT <- read_sheet(Sys.getenv("SURVEY_2026_05_01_CURRENT"), sheet="Main Sheet") %>%
+    select(c('Timestamp',
+             'Patient Code',
+             'QIDS',
+             'BDI',
+             'BAI',
+             'PHQ9',
+             'GAD7',
+             'MADRS-SR',
+             'Harvard Flourishing Scale')) %>%
+    rename(pt_id = 'Patient Code') %>%
+    mutate(Date = as.Date(`Timestamp`),
+           pt_id = tolower(pt_id))
+  
+  survey_raw_results <- rbind(survey_raw_results_2023_11_18_2024_10_31, survey_raw_results_2024_11_01_2026_04_30, survey_raw_results_2026_05_01_CURRENT) %>%
     rename(MADRS = 'MADRS-SR',
            HFS = 'Harvard Flourishing Scale') %>%
     filter(!(is.na(QIDS) & 
